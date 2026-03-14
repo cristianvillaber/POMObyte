@@ -274,3 +274,7 @@ function showToast(msg) {
 // ============================================================
 renderDots();
 renderSessionCount();
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/POMObyte/sw.js');
+}

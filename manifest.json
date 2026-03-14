@@ -1,0 +1,16 @@
+{
+  "name": "POMObyte",
+  "short_name": "POMObyte",
+  "description": "A pixel art pomodoro timer",
+  "start_url": "/POMObyte/",
+  "display": "standalone",
+  "background_color": "#16120e",
+  "theme_color": "#16120e",
+  "icons": [
+    {
+      "src": "assets/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
