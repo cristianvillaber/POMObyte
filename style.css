@@ -1,0 +1,786 @@
+/* ============================================================
+   DESIGN TOKENS
+   When you have Figma assets, replace var(--asset-*) with
+   url('assets/filename.png') in the relevant CSS rules.
+   ============================================================ */
+:root {
+  --ink:      #16120e;
+  --ash:      #2e2820;
+  --coal:     #1e1a14;
+  --paper:    #e4dbc8;
+  --mist:     #b0a890;
+  --stone:    #6e6658;
+  --warm:     #c8a870;
+  --rust:     #8c4a28;
+  --rust-dk:  #5a2a10;
+  --moss:     #4e6040;
+  --moss-dk:  #2c3a20;
+
+  /* Pixel sizes */
+  --px: 3px;
+  --px2: 6px;
+  --px3: 9px;
+
+  /* Spacing (multiples of 8 — japandi rhythm) */
+  --sp-xs: 8px;
+  --sp-sm: 16px;
+  --sp-md: 24px;
+  --sp-lg: 40px;
+
+  /* Asset slots — swap these when Aseprite assets are ready */
+  /* --asset-frame-main:    url('assets/frame-main.png'); */
+  /* --asset-frame-timer:   url('assets/frame-timer.png'); */
+  /* --asset-frame-tasks:   url('assets/frame-tasks.png'); */
+  /* --asset-btn-start:     url('assets/btn-start.png'); */
+  /* --asset-btn-pause:     url('assets/btn-pause.png'); */
+  /* --asset-deco-torii:    url('assets/deco-torii.png'); */
+  /* --asset-deco-crack:    url('assets/deco-crack.png'); */
+  /* --asset-progress-fill: url('assets/progress-fill.png'); */
+  /* --asset-checkbox-empty:url('assets/checkbox-empty.png'); */
+  /* --asset-checkbox-done: url('assets/checkbox-done.png'); */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ============================================================
+   BASE
+   ============================================================ */
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--sp-lg) var(--sp-sm);
+
+  /* Pixel grid bg — remove when frame-main.png asset is ready */
+  background-image:
+    linear-gradient(rgba(200,168,112,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,112,.04) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* ============================================================
+   APP SHELL
+   PLACEHOLDER: solid coal bg + pixel border inset
+   REPLACE WITH: background-image: var(--asset-frame-main)
+                 background-size: contain / cover
+   ============================================================ */
+.app {
+  width: 100%;
+  max-width: 400px;
+  background: var(--coal);
+  /* pixel border (placeholder for frame-main.png) */
+  box-shadow:
+    0 0 0 var(--px) var(--ash),
+    0 0 0 var(--px2) var(--ink),
+    0 0 0 var(--px3) var(--stone),
+    var(--px3) var(--px3) 0 var(--px3) var(--ink);
+  padding: var(--sp-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  position: relative;
+  image-rendering: pixelated;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sp-sm);
+  padding-bottom: var(--sp-sm);
+  /* placeholder for deco-crack.png divider */
+  border-bottom: var(--px) solid var(--ash);
+  position: relative;
+}
+
+/* PLACEHOLDER for deco-crack.png — remove ::after when asset ready */
+.header::after {
+  content: '▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓';
+  position: absolute;
+  bottom: calc(-1 * var(--px));
+  left: 0;
+  font-size: 4px;
+  color: var(--ash);
+  letter-spacing: -1px;
+  overflow: hidden;
+  width: 100%;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.header-kanji {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: var(--warm);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 4px;
+}
+
+.header-title {
+  font-size: 20px;
+  color: var(--mist);
+  letter-spacing: 3px;
+}
+
+.header-sub {
+  font-size: 7px;
+  font-style:bold;
+  color: var(--stone);
+  letter-spacing: 2px;
+}
+
+.header-session {
+  margin-left: auto;
+  font-size: 5px;
+  color: var(--stone);
+  text-align: right;
+  padding-bottom: 6px;
+  line-height: 2.2;
+}
+
+.header-session span {
+  display: block;
+  color: var(--warm);
+  font-size: 14px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+}
+
+/* ============================================================
+   DECORATION — torii / stone
+   PLACEHOLDER: CSS pixel art drawn inline
+   REPLACE WITH: <img src="assets/deco-torii.png" ...>
+   ============================================================ */
+.deco-strip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+  padding: 0 2px;
+}
+
+/* Inline CSS pixel torii placeholder */
+.deco-torii-placeholder {
+  width: 28px;
+  height: 22px;
+  position: relative;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+.deco-torii-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 3px; right: 3px;
+  height: 3px;
+  background: var(--stone);
+  box-shadow: 0 3px 0 var(--stone), -3px 3px 0 var(--stone), 3px 0 0 var(--stone);
+}
+.deco-torii-placeholder::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 3px;
+  width: 3px;
+  height: 12px;
+  background: var(--stone);
+  box-shadow: 19px 0 0 var(--stone);
+}
+
+/* Inline CSS pixel stones placeholder */
+.deco-stones-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+.deco-stones-placeholder i {
+  display: block;
+  background: var(--stone);
+  image-rendering: pixelated;
+}
+.deco-stones-placeholder i:nth-child(1) { width: 10px; height: 6px; }
+.deco-stones-placeholder i:nth-child(2) { width: 14px; height: 7px; }
+.deco-stones-placeholder i:nth-child(3) { width: 18px; height: 5px; }
+
+/* ============================================================
+   MODE TABS
+   PLACEHOLDER: colored divs with pixel inset shadows
+   REPLACE WITH: background-image: var(--asset-tab-*)
+   ============================================================ */
+.modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--px);
+  background: var(--ink);
+  padding: var(--px);
+}
+
+.mode-btn {
+  background: var(--ash);
+  border: none;
+  color: var(--stone);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5px;
+  padding: 10px 4px 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  line-height: 2;
+  text-transform: uppercase;
+  /* placeholder pixel inset for inactive tab */
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(255,255,255,.05),
+    inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(0,0,0,.4);
+}
+
+.mode-btn .kanji {
+  display: block;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--stone);
+  margin-bottom: 4px;
+  transition: color .15s;
+}
+
+.mode-btn:hover { background: #3a342c; }
+.mode-btn:hover .kanji { color: var(--mist); }
+
+.mode-btn.active {
+  background: var(--ink);
+  color: var(--warm);
+  /* placeholder pixel inset for active tab */
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(0,0,0,.6),
+    inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(255,255,255,.04);
+}
+.mode-btn.active .kanji { color: var(--warm); }
+
+/* ============================================================
+   TIMER BLOCK
+   PLACEHOLDER: flat dark bg with inset shadows
+   REPLACE WITH: background-image: var(--asset-frame-timer)
+                 background-size: 100% 100% (9-slice if needed)
+   ============================================================ */
+.timer-block {
+  background: var(--ash);
+  padding: var(--sp-md) var(--sp-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-sm);
+  position: relative;
+  /* placeholder bevel */
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(255,255,255,.06),
+    inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(0,0,0,.5);
+}
+
+/* Progress bar — sits on top edge of timer block */
+.progress-track {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: var(--px);
+  background: var(--coal);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--warm);
+  /* REPLACE WITH: background-image: var(--asset-progress-fill);
+                   background-size: 8px 100%;
+                   background-repeat: repeat-x; */
+  width: 0%;
+  transition: width 1s linear;
+  image-rendering: pixelated;
+}
+
+/* Timer digits */
+.timer-display {
+  font-size: clamp(36px, 10vw, 54px);
+  letter-spacing: 6px;
+  color: var(--paper);
+  line-height: 1;
+  /* pixel drop shadow */
+  text-shadow:
+    var(--px) var(--px) 0 var(--rust),
+    var(--px2) var(--px2) 0 var(--rust-dk);
+  image-rendering: pixelated;
+  position: relative;
+}
+
+.timer-display.running {
+  color: var(--warm);
+  text-shadow:
+    var(--px) var(--px) 0 var(--rust),
+    var(--px2) var(--px2) 0 var(--rust-dk),
+    0 0 32px rgba(200,168,112,.25);
+}
+
+/* Pomodoro count dots */
+.pomo-dots {
+  display: none;
+}
+
+/* PLACEHOLDER for dot — replace with checkbox-done.png / checkbox-empty.png */
+.pomo-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--coal);
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(0,0,0,.5),
+    0 0 0 var(--px) var(--stone);
+  image-rendering: pixelated;
+}
+
+.pomo-dot.done {
+  background: var(--warm);
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(255,255,255,.2),
+    0 0 0 var(--px) var(--rust);
+}
+
+/* ============================================================
+   CONTROLS
+   PLACEHOLDER: flat buttons with pixel box-shadow offset
+   REPLACE WITH: background-image: var(--asset-btn-*)
+                 background-size: contain / 100% 100%
+                 Use separate states via :active + JS class
+   ============================================================ */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--px);
+  justify-content: center;
+}
+
+/* Generic pixel button base */
+.px-btn {
+  border: none;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+  image-rendering: pixelated;
+  position: relative;
+  user-select: none;
+  transition: none;
+}
+
+.px-btn:active { top: var(--px); left: var(--px); }
+
+/* Secondary button (reset, settings) */
+.px-btn--sec {
+  background: var(--coal);
+  color: var(--stone);
+  font-size: 6px;
+  padding: 10px 12px;
+  box-shadow:
+    var(--px) var(--px) 0 var(--ash),
+    var(--px2) var(--px2) 0 var(--ink);
+  letter-spacing: 1px;
+}
+.px-btn--sec:hover { background: var(--ash); color: var(--mist); }
+.px-btn--sec:active { box-shadow: none; }
+
+/* reset button sprite */
+.px-btn--sec.reset {
+  background: url('assets/btn-reset.png') center/contain no-repeat;
+  background-color: transparent;
+  color: transparent;
+  width: 48px;
+  height: 36px;
+  padding: 0;
+  box-shadow: none;
+  image-rendering: pixelated;
+}
+
+/* settings button sprite */
+.px-btn--sec.settings {
+  background: url('assets/icon-settings.png') center/contain no-repeat;
+  background-color: transparent;
+  color: transparent;
+  width: 64px;
+  height: 48px;
+  padding: 0;
+  box-shadow: none;
+  image-rendering: pixelated;
+  margin-left: -12px;
+}
+
+.px-btn--sec.settings:hover { opacity: 0.85; }
+.px-btn--sec.settings:active {
+  transform: translate(2px, 2px);
+}
+
+.px-btn--sec.reset:active {
+  background-image: url('assets/btn-reset-pressed.png');
+  transform: translate(2px, 2px);
+}
+
+/* Primary button (start/pause) */
+.px-btn--primary {
+  background: url('assets/btn-start.png') center/contain no-repeat;
+  background-color: transparent;
+  color: transparent;
+  padding: 0;
+  width: 180px;
+  height: 54px;
+  box-shadow: none;
+  image-rendering: pixelated;
+}
+.px-btn--primary:hover { opacity: 0.85; }
+.px-btn--primary:active {
+  background-image: url('assets/btn-start-pressed.png');
+  transform: translate(2px, 2px);
+}
+
+.px-btn--primary.paused {
+  background-image: url('assets/btn-pause.png');
+  background-color: transparent;
+  box-shadow: none;
+}
+.px-btn--primary.paused:hover { opacity: 0.85; }
+
+/* ============================================================
+   SETTINGS DRAWER
+   ============================================================ */
+.settings-drawer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .25s ease;
+}
+.settings-drawer.open { max-height: 300px; }
+
+.settings-inner {
+  background: var(--ash);
+  padding: var(--sp-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+  /* placeholder bevel same as timer block */
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(255,255,255,.04),
+    inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(0,0,0,.4);
+}
+
+.settings-title {
+  font-size: 5px;
+  color: var(--stone);
+  letter-spacing: 3px;
+  padding-bottom: var(--sp-xs);
+  border-bottom: var(--px) solid var(--coal);
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-sm);
+}
+
+.settings-label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.settings-label .jp {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--mist);
+}
+
+.settings-label .en {
+  font-size: 5px;
+  color: var(--stone);
+  letter-spacing: 1px;
+}
+
+.settings-input {
+  background: var(--coal);
+  border: none;
+  color: var(--warm);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 6px 8px;
+  width: 56px;
+  text-align: center;
+  box-shadow: inset var(--px) var(--px) 0 rgba(0,0,0,.6);
+  outline: none;
+}
+.settings-input:focus {
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(0,0,0,.6),
+    0 0 0 var(--px) var(--warm);
+}
+
+.settings-apply {
+  background: var(--moss);
+  border: none;
+  color: var(--paper);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  box-shadow: var(--px) var(--px) 0 var(--moss-dk), var(--px2) var(--px2) 0 var(--ink);
+  align-self: flex-end;
+  margin-top: 4px;
+}
+.settings-apply:hover { background: #5e7050; }
+.settings-apply:active { transform: translate(var(--px), var(--px)); box-shadow: none; }
+
+/* ============================================================
+   TASKS PANEL
+   PLACEHOLDER: flat bg
+   REPLACE WITH: background-image: var(--asset-frame-tasks)
+   ============================================================ */
+.tasks-panel {
+  background: var(--ash);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+  /* placeholder bevel */
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(255,255,255,.04),
+    inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(0,0,0,.4);
+}
+
+.tasks-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--sp-sm) var(--sp-sm) 0;
+}
+
+.tasks-header .kanji {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--warm);
+}
+
+.tasks-header .label {
+  font-size: 5px;
+  color: var(--stone);
+  letter-spacing: 2px;
+}
+
+.tasks-input-row {
+  display: flex;
+  gap: var(--px);
+  padding: 0 var(--sp-sm);
+}
+
+.task-input {
+  flex: 1;
+  background: var(--coal);
+  border: none;
+  color: var(--paper);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  padding: 8px 10px;
+  letter-spacing: 1px;
+  box-shadow: inset var(--px) var(--px) 0 rgba(0,0,0,.5);
+  outline: none;
+}
+.task-input::placeholder { color: var(--stone); }
+.task-input:focus {
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(0,0,0,.5),
+    0 0 0 var(--px) var(--warm);
+}
+
+.task-add {
+  background: var(--moss);
+  border: none;
+  color: var(--paper);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: var(--px) var(--px) 0 var(--moss-dk), var(--px2) var(--px2) 0 var(--ink);
+  flex-shrink: 0;
+}
+.task-add:hover { background: #5e7050; }
+.task-add:active { transform: translate(var(--px), var(--px)); box-shadow: none; }
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 4px 0 var(--sp-sm);
+}
+.task-list::-webkit-scrollbar { width: 4px; }
+.task-list::-webkit-scrollbar-track { background: var(--coal); }
+.task-list::-webkit-scrollbar-thumb { background: var(--stone); }
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px var(--sp-sm);
+  cursor: pointer;
+  border-top: var(--px) solid var(--coal);
+}
+.task-item:first-child { border-top: none; }
+.task-item:hover { background: rgba(0,0,0,.2); }
+
+/* Checkbox placeholder — replace with checkbox-empty.png / checkbox-done.png */
+.task-check {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  background: var(--coal);
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(0,0,0,.5),
+    0 0 0 var(--px) var(--stone);
+  image-rendering: pixelated;
+  position: relative;
+}
+/* REPLACE .task-check with:
+   background-image: var(--asset-checkbox-empty);
+   background-size: contain;
+*/
+
+.task-item.done .task-check {
+  background: var(--moss);
+  box-shadow:
+    inset var(--px) var(--px) 0 rgba(255,255,255,.15),
+    0 0 0 var(--px) var(--moss-dk);
+}
+/* REPLACE .task-item.done .task-check with:
+   background-image: var(--asset-checkbox-done);
+*/
+
+.task-check::after {
+  content: '';
+  display: none;
+  position: absolute;
+  top: 1px; left: 3px;
+  width: 3px; height: 6px;
+  border-right: 2px solid var(--paper);
+  border-bottom: 2px solid var(--paper);
+  transform: rotate(45deg);
+}
+.task-item.done .task-check::after { display: block; }
+
+.task-text {
+  font-size: 5px;
+  color: var(--mist);
+  letter-spacing: 1px;
+  line-height: 2.2;
+  flex: 1;
+}
+.task-item.done .task-text {
+  color: var(--stone);
+  text-decoration: line-through;
+  text-decoration-color: var(--stone);
+}
+
+.task-del {
+  background: none;
+  border: none;
+  color: var(--stone);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  cursor: pointer;
+  padding: 0 2px;
+  opacity: 0;
+  transition: opacity .1s;
+  flex-shrink: 0;
+}
+.task-item:hover .task-del { opacity: 1; }
+.task-del:hover { color: var(--rust); }
+
+/* Task empty state */
+.task-empty {
+  padding: var(--sp-md) var(--sp-sm);
+  text-align: center;
+  color: var(--stone);
+  font-size: 5px;
+  letter-spacing: 1px;
+  line-height: 2.5;
+}
+.task-empty .kanji {
+  display: block;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--ash);
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   ALERT / TOAST (session complete)
+   ============================================================ */
+.toast {
+  position: fixed;
+  bottom: var(--sp-lg);
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--ash);
+  color: var(--warm);
+  font-size: 6px;
+  padding: var(--sp-sm) var(--sp-md);
+  letter-spacing: 2px;
+  box-shadow:
+    0 0 0 var(--px) var(--warm),
+    var(--px2) var(--px2) 0 var(--ink);
+  opacity: 0;
+  transition: transform .3s, opacity .3s;
+  z-index: 100;
+  white-space: nowrap;
+  image-rendering: pixelated;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--sp-xs);
+  border-top: var(--px) solid var(--ash);
+}
+
+.footer-kanji {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--ash);
+  letter-spacing: 4px;
+}
+
+.sound-toggle {
+  background: none;
+  border: none;
+  color: var(--stone);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 5px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  padding: 4px;
+}
+.sound-toggle:hover { color: var(--mist); }
+.sound-toggle.muted { color: var(--rust); }

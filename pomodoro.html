@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POMO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app" id="app">
+
+
+  <header class="header">
+    <div class="header-meta">
+      <div class="header-title">POMObyte</div>
+      <div class="header-sub">pomodoro study timer</div>
+    </div>
+
+  </header>
+
+ 
+  <div class="modes" role="tablist">
+    <button class="mode-btn active" data-mode="work" data-minutes="25" onclick="setMode(this)">
+      <span class="kanji">働</span>long work
+    </button>
+    <button class="mode-btn" data-mode="short" data-minutes="5" onclick="setMode(this)">
+      <span class="kanji">休</span>rest
+    </button>
+    <button class="mode-btn" data-mode="long" data-minutes="15" onclick="setMode(this)">
+      <span class="kanji">軽</span>light work
+    </button>
+  </div>
+
+
+  <div class="timer-block">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="timer-display" id="timerDisplay">25:00</div>
+
+   
+    <div class="pomo-dots" id="pomoDots">
+      <div class="pomo-dot done"></div>
+      <div class="pomo-dot done"></div>
+      <div class="pomo-dot done"></div>
+      <div class="pomo-dot"></div>
+    </div>
+  </div>
+
+  
+  <div class="controls">
+    <button class="px-btn px-btn--sec reset" onclick="resetTimer()" title="reset"></button>
+    <button class="px-btn px-btn--primary" id="startBtn" onclick="toggleTimer()" title="start/pause"></button>
+    <button class="px-btn px-btn--sec settings" onclick="toggleSettings()" title="settings"></button>
+  </div>
+
+
+  <div class="settings-drawer" id="settingsDrawer">
+    <div class="settings-inner">
+      <div class="settings-title">SETTINGS</div>
+      <div class="settings-row">
+        <div class="settings-label">
+          <span class="jp">働</span>
+          <span class="en">long work</span>
+        </div>
+        <input class="settings-input" type="number" id="setWork" value="25" min="1" max="99">
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">
+          <span class="jp">休</span>
+          <span class="en">rest</span>
+        </div>
+        <input class="settings-input" type="number" id="setShort" value="5" min="1" max="99">
+      </div>
+      <div class="settings-row">
+        <div class="settings-label">
+          <span class="jp">軽</span>
+          <span class="en">light work</span>
+        </div>
+        <input class="settings-input" type="number" id="setLong" value="15" min="1" max="99">
+      </div>
+      <button class="settings-apply" onclick="applySettings()">APPLY ▶</button>
+    </div>
+  </div>
+
+
+  <div class="tasks-panel">
+    <div class="tasks-header">
+      <span class="kanji">業</span>
+      <span class="label">TASKS</span>
+    </div>
+    <div class="tasks-input-row">
+      <input class="task-input" id="taskInput" type="text" placeholder="add task..." maxlength="40"
+             onkeydown="if(event.key==='Enter') addTask()">
+      <button class="task-add" onclick="addTask()">+</button>
+    </div>
+    <div class="task-list" id="taskList">
+      <div class="task-empty" id="taskEmpty">
+        <span class="kanji">無</span>
+        there is no tasks yet
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer">
+    <button class="sound-toggle" id="soundBtn" onclick="toggleSound()"></button>
+  </footer>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
