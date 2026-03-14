@@ -56,24 +56,19 @@ body {
   align-items: flex-start;
   padding: var(--sp-lg) var(--sp-sm);
 
-  /* Pixel grid bg — remove when frame-main.png asset is ready */
+ 
   background-image:
     linear-gradient(rgba(200,168,112,.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(200,168,112,.04) 1px, transparent 1px);
   background-size: 8px 8px;
 }
 
-/* ============================================================
-   APP SHELL
-   PLACEHOLDER: solid coal bg + pixel border inset
-   REPLACE WITH: background-image: var(--asset-frame-main)
-                 background-size: contain / cover
-   ============================================================ */
+
 .app {
   width: 100%;
   max-width: 400px;
   background: var(--coal);
-  /* pixel border (placeholder for frame-main.png) */
+
   box-shadow:
     0 0 0 var(--px) var(--ash),
     0 0 0 var(--px2) var(--ink),
@@ -87,20 +82,17 @@ body {
   image-rendering: pixelated;
 }
 
-/* ============================================================
-   HEADER
-   ============================================================ */
+
 .header {
   display: flex;
   align-items: flex-end;
   gap: var(--sp-sm);
   padding-bottom: var(--sp-sm);
-  /* placeholder for deco-crack.png divider */
   border-bottom: var(--px) solid var(--ash);
   position: relative;
 }
 
-/* PLACEHOLDER for deco-crack.png — remove ::after when asset ready */
+
 .header::after {
   content: '▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓░▓';
   position: absolute;
@@ -161,11 +153,7 @@ body {
   font-weight: 300;
 }
 
-/* ============================================================
-   DECORATION — torii / stone
-   PLACEHOLDER: CSS pixel art drawn inline
-   REPLACE WITH: <img src="assets/deco-torii.png" ...>
-   ============================================================ */
+
 .deco-strip {
   display: flex;
   align-items: center;
@@ -174,7 +162,7 @@ body {
   padding: 0 2px;
 }
 
-/* Inline CSS pixel torii placeholder */
+
 .deco-torii-placeholder {
   width: 28px;
   height: 22px;
@@ -201,7 +189,7 @@ body {
   box-shadow: 19px 0 0 var(--stone);
 }
 
-/* Inline CSS pixel stones placeholder */
+
 .deco-stones-placeholder {
   display: flex;
   flex-direction: column;
@@ -217,11 +205,7 @@ body {
 .deco-stones-placeholder i:nth-child(2) { width: 14px; height: 7px; }
 .deco-stones-placeholder i:nth-child(3) { width: 18px; height: 5px; }
 
-/* ============================================================
-   MODE TABS
-   PLACEHOLDER: colored divs with pixel inset shadows
-   REPLACE WITH: background-image: var(--asset-tab-*)
-   ============================================================ */
+
 .modes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -241,7 +225,6 @@ body {
   letter-spacing: 1px;
   line-height: 2;
   text-transform: uppercase;
-  /* placeholder pixel inset for inactive tab */
   box-shadow:
     inset var(--px) var(--px) 0 rgba(255,255,255,.05),
     inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(0,0,0,.4);
@@ -263,19 +246,14 @@ body {
 .mode-btn.active {
   background: var(--ink);
   color: var(--warm);
-  /* placeholder pixel inset for active tab */
+
   box-shadow:
     inset var(--px) var(--px) 0 rgba(0,0,0,.6),
     inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(255,255,255,.04);
 }
 .mode-btn.active .kanji { color: var(--warm); }
 
-/* ============================================================
-   TIMER BLOCK
-   PLACEHOLDER: flat dark bg with inset shadows
-   REPLACE WITH: background-image: var(--asset-frame-timer)
-                 background-size: 100% 100% (9-slice if needed)
-   ============================================================ */
+
 .timer-block {
   background: var(--ash);
   padding: var(--sp-md) var(--sp-sm);
@@ -284,13 +262,13 @@ body {
   align-items: center;
   gap: var(--sp-sm);
   position: relative;
-  /* placeholder bevel */
+
   box-shadow:
     inset var(--px) var(--px) 0 rgba(255,255,255,.06),
     inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(0,0,0,.5);
 }
 
-/* Progress bar — sits on top edge of timer block */
+
 .progress-track {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -301,21 +279,18 @@ body {
 .progress-fill {
   height: 100%;
   background: var(--warm);
-  /* REPLACE WITH: background-image: var(--asset-progress-fill);
-                   background-size: 8px 100%;
-                   background-repeat: repeat-x; */
+
   width: 0%;
   transition: width 1s linear;
   image-rendering: pixelated;
 }
 
-/* Timer digits */
+
 .timer-display {
   font-size: clamp(36px, 10vw, 54px);
   letter-spacing: 6px;
   color: var(--paper);
   line-height: 1;
-  /* pixel drop shadow */
   text-shadow:
     var(--px) var(--px) 0 var(--rust),
     var(--px2) var(--px2) 0 var(--rust-dk);
@@ -331,12 +306,12 @@ body {
     0 0 32px rgba(200,168,112,.25);
 }
 
-/* Pomodoro count dots */
+
 .pomo-dots {
   display: none;
 }
 
-/* PLACEHOLDER for dot — replace with checkbox-done.png / checkbox-empty.png */
+
 .pomo-dot {
   width: 8px;
   height: 8px;
@@ -354,13 +329,7 @@ body {
     0 0 0 var(--px) var(--rust);
 }
 
-/* ============================================================
-   CONTROLS
-   PLACEHOLDER: flat buttons with pixel box-shadow offset
-   REPLACE WITH: background-image: var(--asset-btn-*)
-                 background-size: contain / 100% 100%
-                 Use separate states via :active + JS class
-   ============================================================ */
+
 .controls {
   display: flex;
   align-items: center;
@@ -368,7 +337,7 @@ body {
   justify-content: center;
 }
 
-/* Generic pixel button base */
+
 .px-btn {
   border: none;
   font-family: 'Press Start 2P', monospace;
@@ -381,7 +350,7 @@ body {
 
 .px-btn:active { top: var(--px); left: var(--px); }
 
-/* Secondary button (reset, settings) */
+
 .px-btn--sec {
   background: var(--coal);
   color: var(--stone);
@@ -395,7 +364,7 @@ body {
 .px-btn--sec:hover { background: var(--ash); color: var(--mist); }
 .px-btn--sec:active { box-shadow: none; }
 
-/* reset button sprite */
+
 .px-btn--sec.reset {
   background: url('assets/btn-reset.png') center/contain no-repeat;
   background-color: transparent;
@@ -407,7 +376,7 @@ body {
   image-rendering: pixelated;
 }
 
-/* settings button sprite */
+
 .px-btn--sec.settings {
   background: url('assets/icon-settings.png') center/contain no-repeat;
   background-color: transparent;
@@ -430,7 +399,7 @@ body {
   transform: translate(2px, 2px);
 }
 
-/* Primary button (start/pause) */
+
 .px-btn--primary {
   background: url('assets/btn-start.png') center/contain no-repeat;
   background-color: transparent;
@@ -454,9 +423,7 @@ body {
 }
 .px-btn--primary.paused:hover { opacity: 0.85; }
 
-/* ============================================================
-   SETTINGS DRAWER
-   ============================================================ */
+
 .settings-drawer {
   overflow: hidden;
   max-height: 0;
@@ -470,7 +437,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--sp-xs);
-  /* placeholder bevel same as timer block */
+
   box-shadow:
     inset var(--px) var(--px) 0 rgba(255,255,255,.04),
     inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(0,0,0,.4);
@@ -544,17 +511,12 @@ body {
 .settings-apply:hover { background: #5e7050; }
 .settings-apply:active { transform: translate(var(--px), var(--px)); box-shadow: none; }
 
-/* ============================================================
-   TASKS PANEL
-   PLACEHOLDER: flat bg
-   REPLACE WITH: background-image: var(--asset-frame-tasks)
-   ============================================================ */
+
 .tasks-panel {
   background: var(--ash);
   display: flex;
   flex-direction: column;
   gap: var(--sp-xs);
-  /* placeholder bevel */
   box-shadow:
     inset var(--px) var(--px) 0 rgba(255,255,255,.04),
     inset calc(-1*var(--px)) calc(-1*var(--px)) 0 rgba(0,0,0,.4);
@@ -641,7 +603,7 @@ body {
 .task-item:first-child { border-top: none; }
 .task-item:hover { background: rgba(0,0,0,.2); }
 
-/* Checkbox placeholder — replace with checkbox-empty.png / checkbox-done.png */
+
 .task-check {
   width: 12px;
   height: 12px;
@@ -653,10 +615,7 @@ body {
   image-rendering: pixelated;
   position: relative;
 }
-/* REPLACE .task-check with:
-   background-image: var(--asset-checkbox-empty);
-   background-size: contain;
-*/
+
 
 .task-item.done .task-check {
   background: var(--moss);
@@ -664,9 +623,7 @@ body {
     inset var(--px) var(--px) 0 rgba(255,255,255,.15),
     0 0 0 var(--px) var(--moss-dk);
 }
-/* REPLACE .task-item.done .task-check with:
-   background-image: var(--asset-checkbox-done);
-*/
+
 
 .task-check::after {
   content: '';
@@ -708,7 +665,7 @@ body {
 .task-item:hover .task-del { opacity: 1; }
 .task-del:hover { color: var(--rust); }
 
-/* Task empty state */
+
 .task-empty {
   padding: var(--sp-md) var(--sp-sm);
   text-align: center;
@@ -726,9 +683,7 @@ body {
   margin-bottom: 8px;
 }
 
-/* ============================================================
-   ALERT / TOAST (session complete)
-   ============================================================ */
+
 .toast {
   position: fixed;
   bottom: var(--sp-lg);
@@ -753,9 +708,7 @@ body {
   opacity: 1;
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+
 .footer {
   display: flex;
   justify-content: space-between;
