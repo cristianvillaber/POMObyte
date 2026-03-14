@@ -1,6 +1,3 @@
-// ============================================================
-//  STATE
-// ============================================================
 const state = {
   mode: 'work',
   durations: { work: 25, short: 5, long: 15 },
@@ -8,16 +5,14 @@ const state = {
   remaining: 25 * 60,
   running: false,
   interval: null,
-  sessions: 4,       // completed pomodoros (out of 4 = long break cycle)
-  completedPomos: 3, // dots display
+  sessions: 4,      
+  completedPomos: 3, 
   soundOn: true,
 };
 
 const kanjiNums = ['零','一','二','三','四','五','六','七','八','九'];
 
-// ============================================================
-//  AUDIO (Web Audio API — no external files needed)
-// ============================================================
+
 let audioCtx = null;
 
 function getAudio() {
@@ -54,9 +49,7 @@ function tickSound() {
   beep(220, 'square', 0.04, 0.04);
 }
 
-// ============================================================
-//  TIMER LOGIC
-// ============================================================
+
 function setMode(btn) {
   if (state.running) return;
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
@@ -118,7 +111,6 @@ function onComplete() {
     renderDots();
     renderSessionCount();
     showToast('focus complete');
-    // auto-suggest break
     setTimeout(() => {
       const next = state.completedPomos >= 4 ? 'long' : 'short';
       const nextBtn = document.querySelector(`[data-mode="${next}"]`);
@@ -134,9 +126,7 @@ function onComplete() {
   }
 }
 
-// ============================================================
-//  RENDER
-// ============================================================
+
 function renderTimer() {
   const m = Math.floor(state.remaining / 60).toString().padStart(2, '0');
   const s = (state.remaining % 60).toString().padStart(2, '0');
@@ -164,9 +154,7 @@ function renderSessionCount() {
   document.getElementById('sessionKanji').textContent = k;
 }
 
-// ============================================================
-//  SETTINGS
-// ============================================================
+
 function toggleSettings() {
   const drawer = document.getElementById('settingsDrawer');
   drawer.classList.toggle('open');
