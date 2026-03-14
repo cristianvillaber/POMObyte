@@ -43,10 +43,11 @@ function beep(freq = 440, type = 'square', duration = 0.15, vol = 0.12) {
 }
 
 function chime() {
-  // Three-note pixel chime
-  setTimeout(() => beep(523, 'square', 0.2, 0.1), 0);
-  setTimeout(() => beep(659, 'square', 0.2, 0.1), 160);
-  setTimeout(() => beep(784, 'square', 0.3, 0.12), 320);
+  setTimeout(() => beep(392, 'square', 0.1, 0.15), 0);
+  setTimeout(() => beep(523, 'square', 0.1, 0.15), 100);
+  setTimeout(() => beep(659, 'square', 0.1, 0.15), 200);
+  setTimeout(() => beep(784, 'square', 0.1, 0.15), 300);
+  setTimeout(() => beep(1046, 'square', 0.3, 0.15), 400);
 }
 
 function tickSound() {
