@@ -1,8 +1,4 @@
-/* ============================================================
-   DESIGN TOKENS
-   When you have Figma assets, replace var(--asset-*) with
-   url('assets/filename.png') in the relevant CSS rules.
-   ============================================================ */
+
 :root {
   --ink:      #16120e;
   --ash:      #2e2820;
@@ -16,35 +12,23 @@
   --moss:     #4e6040;
   --moss-dk:  #2c3a20;
 
-  /* Pixel sizes */
+
   --px: 3px;
   --px2: 6px;
   --px3: 9px;
 
-  /* Spacing (multiples of 8 — japandi rhythm) */
+
   --sp-xs: 8px;
   --sp-sm: 16px;
   --sp-md: 24px;
   --sp-lg: 40px;
 
-  /* Asset slots — swap these when Aseprite assets are ready */
-  /* --asset-frame-main:    url('assets/frame-main.png'); */
-  /* --asset-frame-timer:   url('assets/frame-timer.png'); */
-  /* --asset-frame-tasks:   url('assets/frame-tasks.png'); */
-  /* --asset-btn-start:     url('assets/btn-start.png'); */
-  /* --asset-btn-pause:     url('assets/btn-pause.png'); */
-  /* --asset-deco-torii:    url('assets/deco-torii.png'); */
-  /* --asset-deco-crack:    url('assets/deco-crack.png'); */
-  /* --asset-progress-fill: url('assets/progress-fill.png'); */
-  /* --asset-checkbox-empty:url('assets/checkbox-empty.png'); */
-  /* --asset-checkbox-done: url('assets/checkbox-done.png'); */
+
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ============================================================
-   BASE
-   ============================================================ */
+
 body {
   background: var(--ink);
   color: var(--paper);
