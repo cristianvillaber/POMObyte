@@ -117,7 +117,7 @@ function onComplete() {
     state.sessions++;
     renderDots();
     renderSessionCount();
-    showToast('集中完了 // focus complete');
+    showToast('focus complete');
     // auto-suggest break
     setTimeout(() => {
       const next = state.completedPomos >= 4 ? 'long' : 'short';
@@ -126,7 +126,7 @@ function onComplete() {
       if (state.completedPomos >= 4) state.completedPomos = 0;
     }, 2000);
   } else {
-    showToast('休憩完了 // break done');
+    showToast('rest done');
     setTimeout(() => {
       const workBtn = document.querySelector('[data-mode="work"]');
       if (workBtn) setMode(workBtn);
@@ -189,7 +189,7 @@ function applySettings() {
   }
 
   toggleSettings();
-  showToast('設定保存 // saved');
+  showToast('settings saved');
   beep(440, 'square', 0.1);
 }
 
