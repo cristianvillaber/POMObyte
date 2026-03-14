@@ -178,7 +178,7 @@ function applySettings() {
   state.durations.short = parseInt(document.getElementById('setShort').value) || 5;
   state.durations.long  = parseInt(document.getElementById('setLong').value)  || 15;
 
-  // update active mode
+  
   const activeBtn = document.querySelector('.mode-btn.active');
   if (activeBtn) {
     activeBtn.dataset.minutes = state.durations[state.mode];
@@ -193,9 +193,7 @@ function applySettings() {
   beep(440, 'square', 0.1);
 }
 
-// ============================================================
-//  TASKS
-// ============================================================
+
 const tasks = [];
 
 function addTask() {
@@ -249,9 +247,7 @@ function escHtml(s) {
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-// ============================================================
-//  SOUND TOGGLE
-// ============================================================
+
 function toggleSound() {
   state.soundOn = !state.soundOn;
   const btn = document.getElementById('soundBtn');
@@ -259,9 +255,7 @@ function toggleSound() {
   btn.classList.toggle('muted', !state.soundOn);
 }
 
-// ============================================================
-//  TOAST
-// ============================================================
+
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -269,9 +263,7 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-// ============================================================
-//  INIT
-// ============================================================
+
 renderDots();
 renderSessionCount();
 
